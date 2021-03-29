@@ -31,13 +31,17 @@ document.write(`<style>
 }
 </style>`);
 const themes = ["splendor","retro","air","modest","none"];
-var themeIndex = 0;
-changeTheme();
-function changeTheme() {
-  var theme = themes[themeIndex] ?? themes[themeIndex = 0];
-  history.pushState(null,null,`?theme=${theme}`);
 
-  themeIndex++;
+var searchParams = new URLSearchParams(document.location.search),
+    themeIndex = 0;
+
+if(searchParams.has("theme")) {
+  // TODO
+}
+
+function setTheme(index) {
+  var theme = themes[index] ?? themes[index = 0];
+  history.pushState(null,null,`?theme=${theme}`);
 
   var link;
 
@@ -62,6 +66,11 @@ function changeTheme() {
 
   document.head.appendChild(link);
 }
+
+function changeTheme() {
+  setTheme(++themeIndex);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("input[disabled]").forEach(input => input.disabled = false);
   
