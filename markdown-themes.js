@@ -30,7 +30,7 @@ document.write(`<style>
   }
 }
 </style>`);
-const themes = ["splendor","retro","air","modest"];
+const themes = ["splendor","retro","air","modest","none"];
 var themeIndex = 0;
 changeTheme();
 function changeTheme() {
@@ -42,14 +42,23 @@ function changeTheme() {
   var link;
 
   if(link = document.querySelector("#custom-style")) {
-    link.href = `http://markdowncss.github.io/${theme}/css/${theme}.css`;
+    if(theme == "none") {
+      link.href = "";
+    } else {
+      link.href = `http://markdowncss.github.io/${theme}/css/${theme}.css`;
+    }
     return;
   }
   
   link = document.createElement("link");
   link.id = "custom-style";
   link.rel = "stylesheet";
-  link.href = `http://markdowncss.github.io/${theme}/css/${theme}.css`;
+
+  if(theme == "none") {
+    link.href = "";
+  } else {
+    link.href = `http://markdowncss.github.io/${theme}/css/${theme}.css`;
+  }
 
   document.head.appendChild(link);
 }
@@ -59,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var button = document.createElement("button");
   button.onclick = () => changeTheme();
   button.id = "change-theme";
-  document.body.appendChild(button);
   button.innerText = "Change Theme";
+  document.body.appendChild(button);
 
 });
