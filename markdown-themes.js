@@ -35,8 +35,10 @@ var searchParams = new URLSearchParams(document.location.search),
     themeIndex = 0;
 
 if(searchParams.has("theme")) {
-  themeIndex = themes.indexOf(searchParams.get("theme"));
-  setTheme(themeIndex);
+    themeIndex = themes.indexOf(searchParams.get("theme"));
+    setTheme(themeIndex);
+} else {
+    setTheme(themeIndex);
 }
 
 function setTheme(index) {
