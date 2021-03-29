@@ -29,7 +29,7 @@ document.write(`<style>
   }
 }
 </style>`);
-const themes = ["splendor","retro","air","modest","none"];
+const themes = ["none","splendor","retro","air","modest"];
 
 var searchParams = new URLSearchParams(document.location.search),
     themeIndex = 0;
