@@ -36,41 +36,34 @@ var searchParams = new URLSearchParams(document.location.search),
 
 if(searchParams.has("theme")) {
     themeIndex = themes.indexOf(searchParams.get("theme"));
-    setTheme(themeIndex);
-} else {
-    setTheme(themeIndex);
 }
 
-function setTheme(index) {
-  var theme = themes[index] ?? themes[index = 0];
+setTheme();
+
+function setTheme() {
+  var theme = themes[themeIndex] ?? themes[themeIndex = 0],
+    href = theme == "none"? "": `http://markdowncss.github.io/${theme}/css/${theme}.css`;
+
   history.pushState(null,null,`?theme=${theme}`);
 
   var link;
 
   if(link = document.querySelector("#custom-style")) {
-    if(theme == "none") {
-      link.href = "";
-    } else {
-      link.href = `http://markdowncss.github.io/${theme}/css/${theme}.css`;
-    }
+    link.href = href;
     return;
   }
   
   link = document.createElement("link");
   link.id = "custom-style";
   link.rel = "stylesheet";
-
-  if(theme == "none") {
-    link.href = "";
-  } else {
-    link.href = `http://markdowncss.github.io/${theme}/css/${theme}.css`;
-  }
+  link.href = href;
 
   document.head.appendChild(link);
 }
 
 function changeTheme() {
-  setTheme(++themeIndex);
+    themeIndex++;
+    setTheme();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
