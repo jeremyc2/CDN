@@ -28,6 +28,9 @@ document.write(`<style>
     margin:0.4em auto;
   }
 }
+td {
+  text-align: start !important;
+}
 </style>`);
 const themes = ["none","splendor","retro","air","modest"];
 
