@@ -13,7 +13,6 @@ document.write(`<style>
   font-weight:300;
   text-align:center;
   transition: all 0.2s;
-
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -36,7 +35,8 @@ var searchParams = new URLSearchParams(document.location.search),
     themeIndex = 0;
 
 if(searchParams.has("theme")) {
-  // TODO
+  themeIndex = themes.indexOf(searchParams.get("theme"));
+  setTheme(themeIndex);
 }
 
 function setTheme(index) {
