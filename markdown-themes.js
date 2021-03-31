@@ -32,11 +32,8 @@ body {
     margin:0.4em auto;
   }
 }
-td {
-  text-align: start !important;
-}
 </style>`);
-const themes = ["none","splendor","retro","air","modest"];
+const themes = ["none","splendor","retro","modest"];
 
 var searchParams = new URLSearchParams(document.location.search),
     themeIndex = 0;
@@ -49,7 +46,7 @@ setTheme();
 
 function setTheme() {
   var theme = themes[themeIndex] ?? themes[themeIndex = 0],
-    href = theme == "none"? "": `http://markdowncss.github.io/${theme}/css/${theme}.css`;
+    href = theme == "none"? "": `https://jeremyc2.github.io/CDN/${theme}.css`;
 
   history.pushState(null,null,`?theme=${theme}`);
 
